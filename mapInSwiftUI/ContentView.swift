@@ -49,12 +49,18 @@ struct ContentView: View {
             Map(coordinateRegion: $region, annotationItems: annotations){
                 MapAnnotation(coordinate: $0.coordinate){
                     Circle()
-                        .strokeBorder(.red, lineWidth: 4)
+                        .strokeBorder(randomColor(), lineWidth: 4)
                         .frame(width: 40,height: 40)
                 }
             }
         }
         .padding()
+    }
+    private func randomColor() -> Color {
+        let red = Double.random(in: 0...1)
+        let green = Double.random(in: 0...1)
+        let blue = Double.random(in: 0...1)
+        return Color(red: red, green: green, blue: blue)
     }
 }
 
